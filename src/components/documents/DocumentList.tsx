@@ -18,7 +18,8 @@ import {
   Description as DescriptionIcon,
   Delete as DeleteIcon,
   Download as DownloadIcon,
-  Refresh as RefreshIcon
+  Refresh as RefreshIcon,
+  Visibility as VisibilityIcon,
 } from '@mui/icons-material';
 import axios from 'axios';
 import InsertDriveFileIcon from '@mui/icons-material/InsertDriveFile';
@@ -31,32 +32,69 @@ interface Document {
   size?: number;
 }
 
+// Mock placeholder documents
+const getPlaceholderDocuments = (category: string): Document[] => {
+  const currentYear = new Date().getFullYear();
+  const categoryNames: { [key: string]: string[] } = {
+    payslips: ['Lohnabrechnung_Januar.pdf', 'Lohnabrechnung_Februar.pdf', 'Lohnabrechnung_März.pdf'],
+    receipts: ['Rechnung_Handwerker.pdf', 'Rechnung_Büromaterial.pdf', 'Rechnung_Fachliteratur.pdf'],
+    contracts: ['Arbeitsvertrag.pdf', 'Mietvertrag.pdf'],
+    'bank-statements': ['Kontoauszug_Januar.pdf', 'Kontoauszug_Februar.pdf'],
+    insurance: ['Versicherungspolice_Krankenversicherung.pdf', 'Versicherungspolice_Haftpflicht.pdf'],
+    other: ['Sonstiges_Dokument.pdf'],
+  };
+
+  const names = categoryNames[category] || ['Dokument.pdf'];
+  return names.map((name, index) => ({
+    id: `doc-${category}-${index}`,
+    name,
+    type: category,
+    uploadDate: new Date(currentYear, index, 15).toLocaleDateString('de-DE'),
+    size: Math.floor(Math.random() * 500 + 100), // Random size between 100-600 KB
+  }));
+};
+
+const getCategoryDisplayName = (category: string): string => {
+  const categoryMap: { [key: string]: string } = {
+    payslips: 'Lohnabrechnungen',
+    receipts: 'Rechnungen & Belege',
+    contracts: 'Verträge',
+    'bank-statements': 'Kontoauszüge',
+    insurance: 'Versicherungen',
+    other: 'Sonstiges',
+  };
+  return categoryMap[category] || category;
+};
+
 export default function DocumentList() {
-  const { year, category } = useParams<{ year: string; category: string }>();
+  const { category } = useParams<{ category: string }>();
+  const currentYear = new Date().getFullYear();
   const [documents, setDocuments] = useState<Document[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   const fetchDocuments = async () => {
     setLoading(true);
     setError(null);
     try {
-      const res = await axios.get(`/api/documents/${year}/${category}`);
-      // Ensure we always set an array, even if the response is null/undefined
-      const data = res.data;
-      setDocuments(Array.isArray(data) ? data : []);
+      // In real app, this would be: const res = await axios.get(`/api/documents/${category}`);
+      // For now, use placeholder documents
+      setTimeout(() => {
+        const placeholderDocs = getPlaceholderDocuments(category || '');
+        setDocuments(placeholderDocs);
+        setLoading(false);
+      }, 500);
     } catch (error) {
       console.error('Error fetching documents:', error);
       setError('Dokumente konnten nicht geladen werden. Bitte versuchen Sie es später erneut.');
-      setDocuments([]); // Reset to empty array on error
-    } finally {
+      setDocuments([]);
       setLoading(false);
     }
   };
 
   useEffect(() => {
     fetchDocuments();
-  }, [year, category]);
+  }, [category]);
 
   const handleDelete = async (id: string) => {
     try {
@@ -97,13 +135,21 @@ export default function DocumentList() {
   return (
     <Box sx={{ mt: 2 }}>
       <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}>
-        <Typography variant="h5">
-          Dokumente für {year} - {category}
+        <Typography variant="h5" sx={{ fontWeight: 600, color: '#1E293B' }}>
+          Dokumente für {currentYear} - {getCategoryDisplayName(category || '')}
         </Typography>
         <Button
           startIcon={<RefreshIcon />}
           onClick={fetchDocuments}
           disabled={loading}
+          sx={{
+            bgcolor: '#32CE69',
+            color: '#FFFFFF',
+            textTransform: 'none',
+            '&:hover': {
+              bgcolor: '#28B85A',
+            },
+          }}
         >
           Aktualisieren
         </Button>
@@ -120,7 +166,16 @@ export default function DocumentList() {
           Fehler beim Laden der Dokumente. Bitte versuchen Sie es erneut.
         </Alert>
       ) : documents.length === 0 ? (
-        <Alert severity="info">
+        <Alert
+          severity="info"
+          sx={{
+            bgcolor: '#EFF6FF',
+            border: '1px solid #BFDBFE',
+            '& .MuiAlert-icon': {
+              color: '#3B82F6',
+            },
+          }}
+        >
           Keine Dokumente in dieser Kategorie vorhanden.
         </Alert>
       ) : (
@@ -154,17 +209,46 @@ export default function DocumentList() {
                   </Typography>
                 </Box>
               </Box>
-              <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-                <Typography variant="body2" color="text.secondary" sx={{ mr: 2, minWidth: 48, textAlign: 'right' }}>
-                  {year}
-                </Typography>
+              <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                <IconButton
+                  edge="end"
+                  aria-label="view"
+                  onClick={() => {
+                    // Handle view
+                    console.log('View document:', doc.id);
+                  }}
+                  sx={{
+                    bgcolor: '#F7F8F9',
+                    borderRadius: 2,
+                    '&:hover': { bgcolor: '#E2E8F0' },
+                  }}
+                >
+                  <VisibilityIcon />
+                </IconButton>
                 <IconButton
                   edge="end"
                   aria-label="download"
                   onClick={() => handleDownload(doc.id)}
-                  sx={{ bgcolor: '#f3f4f6', borderRadius: 2 }}
+                  sx={{
+                    bgcolor: '#F7F8F9',
+                    borderRadius: 2,
+                    '&:hover': { bgcolor: '#E2E8F0' },
+                  }}
                 >
                   <DownloadIcon />
+                </IconButton>
+                <IconButton
+                  edge="end"
+                  aria-label="delete"
+                  onClick={() => handleDelete(doc.id)}
+                  sx={{
+                    bgcolor: '#FEE2E2',
+                    borderRadius: 2,
+                    color: '#EF4444',
+                    '&:hover': { bgcolor: '#FECACA' },
+                  }}
+                >
+                  <DeleteIcon />
                 </IconButton>
               </Box>
             </Paper>

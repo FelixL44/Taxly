@@ -12,6 +12,7 @@ import IncomeSources from './components/IncomeSources';
 import DataUpload from './components/DataUpload';
 import Documents from './components/Documents';
 import Chat from './components/Chat';
+import Messages from './components/Messages';
 import Profile from './components/Profile';
 import Appointments from './components/Appointments';
 import TaxFiling from './components/TaxFiling';
@@ -35,6 +36,7 @@ const AppRoutes: React.FC = () => {
         <Route path="documents/*" element={<Documents />} />
         <Route path="appointments" element={<Appointments />} />
         <Route path="tax-filing" element={<TaxFiling />} />
+        <Route path="messages" element={<Messages />} />
         <Route path="profile" element={<Profile />} />
       </Route>
       <Route path="*" element={<Navigate to="/" replace />} />

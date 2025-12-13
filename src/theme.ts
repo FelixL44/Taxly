@@ -24,19 +24,19 @@ declare module '@mui/material/styles' {
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#0D4117',
-      light: '#2E6F3E',
-      dark: '#0A2F11',
+      main: '#1E7A35',
+      light: '#32CE69',
+      dark: '#155A28',
     },
     secondary: {
-      main: '#45A169',
+      main: '#32CE69',
     },
     neutral: {
       light: '#F7F8F9',
       dark: '#333333',
     },
     accent: {
-      success: '#45A169',
+      success: '#32CE69',
     },
     background: {
       default: '#F7F8F9',
@@ -52,7 +52,7 @@ const theme = createTheme({
     h1: {
       fontSize: '2rem',
       fontWeight: 600,
-      color: '#0D4117',
+      color: '#1E7A35',
     },
     h2: {
       fontSize: '1.75rem',
@@ -119,10 +119,10 @@ const theme = createTheme({
             borderRadius: 8,
             backgroundColor: '#F7F8F9',
             '&:hover .MuiOutlinedInput-notchedOutline': {
-              borderColor: '#2E6F3E',
+              borderColor: '#32CE69',
             },
             '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
-              borderColor: '#2E6F3E',
+              borderColor: '#32CE69',
               borderWidth: 2,
             },
           },
@@ -159,7 +159,7 @@ const theme = createTheme({
           borderRadius: 8,
           '&.Mui-selected': {
             backgroundColor: '#F7F8F9',
-            color: '#0D4117',
+            color: '#1E7A35',
             '&:hover': {
               backgroundColor: '#F7F8F9',
             },

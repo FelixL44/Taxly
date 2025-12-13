@@ -20,14 +20,14 @@ export interface Category {
 export const categories: Category[] = [
   {
     id: 'payslips',
-    title: 'Gehaltsabrechnungen',
+    title: 'Lohnabrechnungen',
     description: 'Monatliche Gehaltsabrechnungen und Lohnsteuerbescheinigungen',
     icon: ReceiptIcon,
     route: 'payslips'
   },
   {
     id: 'receipts',
-    title: 'Belege & Rechnungen',
+    title: 'Rechnungen & Belege',
     description: 'Quittungen, Rechnungen und andere Ausgabenbelege',
     icon: DescriptionIcon,
     route: 'receipts'
@@ -52,20 +52,6 @@ export const categories: Category[] = [
     description: 'Versicherungspolicen und Beitragsbescheinigungen',
     icon: SecurityIcon,
     route: 'insurance'
-  },
-  {
-    id: 'self-employment',
-    title: 'Selbstständigkeit',
-    description: 'Rechnungen an Kunden und Einnahmenüberschussrechnungen',
-    icon: BusinessIcon,
-    route: 'self-employment'
-  },
-  {
-    id: 'donations',
-    title: 'Spenden',
-    description: 'Spendenbescheinigungen und Zuwendungsbestätigungen',
-    icon: FavoriteIcon,
-    route: 'donations'
   },
   {
     id: 'other',

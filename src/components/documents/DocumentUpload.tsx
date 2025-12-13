@@ -13,7 +13,7 @@ import {
   MenuItem,
   SelectChangeEvent
 } from '@mui/material';
-import { CloudUpload as CloudUploadIcon } from '@mui/icons-material';
+import { CloudUpload as CloudUploadIcon, Folder as FolderIcon } from '@mui/icons-material';
 import axios from 'axios';
 
 const documentTypes = [
@@ -27,7 +27,8 @@ const documentTypes = [
 ];
 
 export default function DocumentUpload() {
-  const { year } = useParams<{ year: string }>();
+  const { category } = useParams<{ category: string }>();
+  const currentYear = new Date().getFullYear();
   const [file, setFile] = useState<File | null>(null);
   const [type, setType] = useState('');
   const [uploading, setUploading] = useState(false);
@@ -61,7 +62,8 @@ export default function DocumentUpload() {
     const formData = new FormData();
     formData.append('file', file);
     formData.append('type', type);
-    formData.append('year', year || '');
+    formData.append('year', currentYear.toString());
+    formData.append('category', category || '');
 
     setUploading(true);
     setProgress(0);
@@ -99,8 +101,8 @@ export default function DocumentUpload() {
 
   return (
     <Paper elevation={2} sx={{ p: 3 }}>
-      <Typography variant="h5" gutterBottom>
-        Dokument hochladen für {year}
+      <Typography variant="h5" gutterBottom sx={{ fontWeight: 600, color: '#1E293B' }}>
+        Dokument hochladen für {currentYear}
       </Typography>
 
       <Box sx={{ mb: 3 }}>
@@ -115,9 +117,17 @@ export default function DocumentUpload() {
           <Button
             variant="outlined"
             component="span"
-            startIcon={<CloudUploadIcon />}
+            startIcon={<FolderIcon />}
             disabled={uploading}
-            sx={{ mb: 2 }}
+            sx={{
+              mb: 2,
+              borderColor: '#32CE69',
+              color: '#32CE69',
+              '&:hover': {
+                borderColor: '#28B85A',
+                bgcolor: '#F0FDF4',
+              },
+            }}
           >
             Datei auswählen
           </Button>
@@ -172,6 +182,19 @@ export default function DocumentUpload() {
         onClick={handleUpload}
         disabled={uploading || !file || !type}
         fullWidth
+        sx={{
+          bgcolor: '#32CE69',
+          color: '#FFFFFF',
+          textTransform: 'none',
+          py: 1.5,
+          '&:hover': {
+            bgcolor: '#28B85A',
+          },
+          '&:disabled': {
+            bgcolor: '#E2E8F0',
+            color: '#94A3B8',
+          },
+        }}
       >
         {uploading ? 'Wird hochgeladen...' : 'Hochladen'}
       </Button>
