@@ -36,8 +36,13 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     }
   }, []);
 
-  const login = async (email: string) => {
+  const login = async (email: string, password: string) => {
     try {
+      // Validate credentials
+      if (email !== 'felix.lick@gmx.de' || password !== 'soygai') {
+        throw new Error('Ungültige E-Mail oder Passwort');
+      }
+
       // Here you would typically make an API call to authenticate
       // For development, we'll just simulate a successful login
       const mockUser: User = {
@@ -50,7 +55,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       setIsAuthenticated(true);
       localStorage.setItem('user', JSON.stringify(mockUser));
     } catch (error) {
-      throw new Error('Login failed');
+      throw error;
     }
   };
 

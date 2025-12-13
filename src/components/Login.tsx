@@ -50,7 +50,7 @@ const Login = () => {
       await login(formData.email, formData.password);
       navigate('/');
     } catch (error) {
-      setError('Ein Fehler ist bei der Anmeldung aufgetreten');
+      setError(error instanceof Error ? error.message : 'Ein Fehler ist bei der Anmeldung aufgetreten');
     }
   };
 
