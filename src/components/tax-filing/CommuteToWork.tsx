@@ -8,7 +8,6 @@ import {
   FormControlLabel,
   TextField,
   IconButton,
-  Paper,
   Alert,
   Tooltip,
   Card,
@@ -21,7 +20,6 @@ import {
   CheckCircle as CheckCircleIcon,
 } from '@mui/icons-material';
 
-const BRAND_GREEN = '#32CE69';
 const ACTIVE_BLUE = '#3B82F6';
 const INACTIVE_COLOR = '#475569';
 
@@ -37,7 +35,7 @@ interface CommuteData {
   distance: number;
 }
 
-const CommuteToWork: React.FC<{ onBack: () => void }> = ({ onBack }) => {
+const CommuteToWork: React.FC = () => {
   const [commutes, setCommutes] = useState<CommuteData[]>([
     {
       id: '1',

@@ -11,12 +11,10 @@ import {
   Select,
   MenuItem,
   FormControl,
-  InputLabel,
   Tooltip,
   Accordion,
   AccordionSummary,
   AccordionDetails,
-  Chip,
 } from '@mui/material';
 import {
   Delete as DeleteIcon,
@@ -27,7 +25,6 @@ import {
   ExpandMore as ExpandMoreIcon,
 } from '@mui/icons-material';
 
-const BRAND_GREEN = '#32CE69';
 const ACTIVE_BLUE = '#3B82F6';
 const INACTIVE_COLOR = '#475569';
 
@@ -38,7 +35,7 @@ interface Sale {
   description: string;
 }
 
-const PrivateSales: React.FC<{ onBack: () => void }> = ({ onBack }) => {
+const PrivateSales: React.FC = () => {
   const [sales, setSales] = useState<Sale[]>([
     {
       id: '1',

@@ -10,12 +10,6 @@ import {
   IconButton,
   Card,
   CardContent,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
 } from '@mui/material';
 import {
   Edit as EditIcon,
@@ -33,7 +27,6 @@ import {
   ResponsiveContainer,
 } from 'recharts';
 import { useAuthStore } from '../store/authStore';
-import { FinancialSummary } from '../types';
 
 const Profile = () => {
   const { user } = useAuthStore();
@@ -45,22 +38,6 @@ const Profile = () => {
     profession: user?.profession || '',
     phone: user?.phone || '',
   });
-
-  // Mock financial data - this would come from your API
-  const financialData = {
-    paidByYear: [
-      { year: 2020, arbeit: 800, kapital: 200 },
-      { year: 2021, arbeit: 1000, kapital: 300 },
-      { year: 2022, arbeit: 700, kapital: 250 },
-      { year: 2023, arbeit: 1200, kapital: 350 },
-    ],
-    recoveredByYear: [
-      { year: 2020, amount: 100 },
-      { year: 2021, amount: 200 },
-      { year: 2022, amount: 150 },
-      { year: 2023, amount: 300 },
-    ],
-  };
 
   // Neue Chartdaten laut Userwunsch, gestapelt
   const chartData = [

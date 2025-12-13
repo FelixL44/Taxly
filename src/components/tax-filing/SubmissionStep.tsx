@@ -27,7 +27,7 @@ interface SubmissionStepProps {
   onSubmit: () => void;
 }
 
-const SubmissionStep: React.FC<SubmissionStepProps> = ({ onBack, onSubmit }) => {
+const SubmissionStep: React.FC<SubmissionStepProps> = ({ onSubmit }) => {
   // Mock data - in real app, this would come from state/props
   const summaryData = {
     personal: {

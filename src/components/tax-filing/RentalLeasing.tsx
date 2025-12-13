@@ -3,7 +3,6 @@ import {
   Box,
   Typography,
   Button,
-  TextField,
   IconButton,
   Radio,
   RadioGroup,
@@ -11,7 +10,6 @@ import {
   Select,
   MenuItem,
   FormControl,
-  InputLabel,
   Tooltip,
   Accordion,
   AccordionSummary,
@@ -26,7 +24,6 @@ import {
   ExpandMore as ExpandMoreIcon,
 } from '@mui/icons-material';
 
-const BRAND_GREEN = '#32CE69';
 const ACTIVE_BLUE = '#3B82F6';
 const INACTIVE_COLOR = '#475569';
 
@@ -36,7 +33,7 @@ interface Property {
   propertyType: string;
 }
 
-const RentalLeasing: React.FC<{ onBack: () => void }> = ({ onBack }) => {
+const RentalLeasing: React.FC = () => {
   const [properties, setProperties] = useState<Property[]>([
     {
       id: '1',

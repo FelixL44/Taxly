@@ -2,7 +2,6 @@ import React from 'react';
 import {
   Box,
   Typography,
-  Paper,
   Button,
   Grid,
   Card,
@@ -54,11 +53,9 @@ function berechneSteuer2024(einkommen: number): number {
 }
 
 const PreviewStep: React.FC<PreviewStepProps> = ({
-  year,
   incomeTypes,
   income,
   deductions,
-  uploadedFiles,
   onNext,
   onBack,
 }) => {

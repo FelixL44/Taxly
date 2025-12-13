@@ -9,15 +9,12 @@ import {
   CardContent,
   LinearProgress,
   Chip,
-  IconButton,
-  Tooltip,
   Alert,
 } from '@mui/material';
 import {
   Receipt as ReceiptIcon,
   Description as DocumentIcon,
   Event as EventIcon,
-  Info as InfoIcon,
   Security as SecurityIcon,
 } from '@mui/icons-material';
 import { useAuth } from '../contexts/AuthContext';
@@ -29,7 +26,7 @@ const Dashboard: React.FC = () => {
   const navigate = useNavigate();
   const { user } = useAuth();
   const [todos, setTodos] = useState<Todo[]>([]);
-  const [missingDocs, setMissingDocs] = useState<Document[]>([]);
+  const [missingDocs] = useState<Document[]>([]);
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {

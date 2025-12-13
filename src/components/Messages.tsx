@@ -11,7 +11,6 @@ import {
   Avatar,
   InputAdornment,
   Paper,
-  Divider,
 } from '@mui/material';
 import {
   Send as SendIcon,

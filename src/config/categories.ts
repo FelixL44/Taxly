@@ -4,8 +4,6 @@ import {
   Assignment as AssignmentIcon,
   AccountBalance as AccountBalanceIcon,
   Security as SecurityIcon,
-  Business as BusinessIcon,
-  Favorite as FavoriteIcon,
   Folder as FolderIcon,
 } from '@mui/icons-material';
 

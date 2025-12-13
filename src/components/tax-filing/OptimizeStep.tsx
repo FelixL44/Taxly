@@ -19,10 +19,7 @@ import {
   ArrowForward as ArrowForwardIcon,
   AutoAwesome as AutoAwesomeIcon,
   Info as InfoIcon,
-  ArrowBack as ArrowBackIcon,
 } from '@mui/icons-material';
-
-const BRAND_GREEN = '#32CE69';
 const ACTIVE_BLUE = '#3B82F6';
 const INACTIVE_COLOR = '#475569';
 const ERROR_RED = '#EF4444';
@@ -67,7 +64,6 @@ const OptimizeStep: React.FC<OptimizeStepProps> = ({
   hints,
   onNavigateToInput,
   onDismiss,
-  onBack,
 }) => {
   const [dismissedItems, setDismissedItems] = useState<Set<string>>(new Set());
 

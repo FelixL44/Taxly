@@ -11,7 +11,6 @@ import {
   ListItemText,
   Chip,
   Paper,
-  Button,
 } from '@mui/material';
 import {
   Delete as DeleteIcon,
@@ -38,7 +37,7 @@ const services = [
   { id: 'flooring', label: 'Arbeiten an Bodenbelägen', frequent: false },
 ];
 
-const AncillaryCosts: React.FC<{ onBack: () => void }> = ({ onBack }) => {
+const AncillaryCosts: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState('');
 
   const filteredServices = services.filter((s) =>

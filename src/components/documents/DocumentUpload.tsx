@@ -13,7 +13,7 @@ import {
   MenuItem,
   SelectChangeEvent
 } from '@mui/material';
-import { CloudUpload as CloudUploadIcon, Folder as FolderIcon } from '@mui/icons-material';
+import { Folder as FolderIcon } from '@mui/icons-material';
 import axios from 'axios';
 
 const documentTypes = [

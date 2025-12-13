@@ -19,7 +19,6 @@ import {
   Card,
   CardContent,
   Checkbox,
-  FormControlLabel,
   Chip,
   IconButton,
   Tooltip,
@@ -41,7 +40,6 @@ import {
   ArrowForward as ArrowForwardIcon,
   HelpOutline as HelpOutlineIcon,
   Close as CloseIcon,
-  Description as DescriptionIcon,
   PhoneAndroid as PhoneAndroidIcon,
 } from '@mui/icons-material';
 import CommuteToWork from './tax-filing/CommuteToWork';
@@ -425,7 +423,7 @@ const TaxFiling: React.FC = () => {
     return hints;
   };
 
-  const handleNavigateToInput = (category: string, itemId: string) => {
+  const handleNavigateToInput = (category: string) => {
     setActiveStep(0); // Zurück zu Step 1
     setSelectedTopic(category);
     // Auto-expand relevant topic
@@ -465,15 +463,15 @@ const TaxFiling: React.FC = () => {
         <OptimizeStep
           errors={errors.map((e) => ({
             ...e,
-            onClick: () => handleNavigateToInput(e.category, e.id),
+            onClick: () => handleNavigateToInput(e.category),
           }))}
           problems={problems.map((p) => ({
             ...p,
-            onClick: () => handleNavigateToInput(p.category, p.id),
+            onClick: () => handleNavigateToInput(p.category),
           }))}
           hints={hints.map((h) => ({
             ...h,
-            onClick: () => handleNavigateToInput(h.category, h.id),
+            onClick: () => handleNavigateToInput(h.category),
           }))}
           onNavigateToInput={handleNavigateToInput}
           onDismiss={handleDismiss}
@@ -515,7 +513,7 @@ const TaxFiling: React.FC = () => {
 
     // Persönliches - Detail
     if (selectedTopic.startsWith('personal-')) {
-      return <PersonalDetails onBack={() => setSelectedTopic('personal')} />;
+      return <PersonalDetails />;
     }
 
     // Arbeitnehmer - Overview
@@ -602,19 +600,19 @@ const TaxFiling: React.FC = () => {
       const subItemId = selectedTopic.replace('employee-', '');
       
       if (subItemId === 'commute') {
-        return <CommuteToWork onBack={() => setSelectedTopic('employee')} />;
+        return <CommuteToWork />;
       }
       
       if (subItemId === 'relocation') {
-        return <RelocationCosts onBack={() => setSelectedTopic('employee')} />;
+        return <RelocationCosts />;
       }
       
       if (subItemId === 'phone-internet') {
-        return <PhoneInternetCosts onBack={() => setSelectedTopic('employee')} />;
+        return <PhoneInternetCosts />;
       }
       
       if (subItemId === 'work-equipment') {
-        return <WorkEquipment onBack={() => setSelectedTopic('employee')} />;
+        return <WorkEquipment />;
       }
       
       // Generic task handler with tax info
@@ -657,7 +655,6 @@ const TaxFiling: React.FC = () => {
         return (
         <GenericEmployeeTask
           title={taskLabel}
-          onBack={() => setSelectedTopic('employee')}
           taxInfo={taskTaxInfo}
           fields={subItemId === 'home-office' ? [
             {
@@ -801,31 +798,31 @@ const TaxFiling: React.FC = () => {
       const subItemId = selectedTopic.replace('other-income-', '');
       
       if (subItemId === 'wage-replacement') {
-        return <WageReplacementBenefits onBack={() => setSelectedTopic('other-income')} />;
+        return <WageReplacementBenefits />;
       }
       
       if (subItemId === 'interest') {
-        return <InterestCapitalGains onBack={() => setSelectedTopic('other-income')} />;
+        return <InterestCapitalGains />;
       }
       
       if (subItemId === 'pensions') {
-        return <PensionsAnnuities onBack={() => setSelectedTopic('other-income')} />;
+        return <PensionsAnnuities />;
       }
       
       if (subItemId === 'rental') {
-        return <RentalLeasing onBack={() => setSelectedTopic('other-income')} />;
+        return <RentalLeasing />;
       }
       
       if (subItemId === 'self-employment') {
-        return <SelfEmployment onBack={() => setSelectedTopic('other-income')} />;
+        return <SelfEmployment />;
       }
       
       if (subItemId === 'private-sales') {
-        return <PrivateSales onBack={() => setSelectedTopic('other-income')} />;
+        return <PrivateSales />;
       }
       
       if (subItemId === 'other-income') {
-        return <OtherIncome onBack={() => setSelectedTopic('other-income')} />;
+        return <OtherIncome />;
       }
     }
 
@@ -948,27 +945,27 @@ const TaxFiling: React.FC = () => {
       const subItemId = selectedTopic.replace('general-expenses-', '');
       
       if (subItemId === 'insurance') {
-        return <InsuranceRetirement onBack={() => setSelectedTopic('general-expenses')} />;
+        return <InsuranceRetirement />;
       }
       
       if (subItemId === 'utilities') {
-        return <AncillaryCosts onBack={() => setSelectedTopic('general-expenses')} />;
+        return <AncillaryCosts />;
       }
       
       if (subItemId === 'craftsmen') {
-        return <CraftsmenHousehold onBack={() => setSelectedTopic('general-expenses')} />;
+        return <CraftsmenHousehold />;
       }
       
       if (subItemId === 'donations') {
-        return <DonationsPartyContributions onBack={() => setSelectedTopic('general-expenses')} />;
+        return <DonationsPartyContributions />;
       }
       
       if (subItemId === 'education') {
-        return <FirstEducation onBack={() => setSelectedTopic('general-expenses')} />;
+        return <FirstEducation />;
       }
       
       if (subItemId === 'church-tax') {
-        return <ChurchTax onBack={() => setSelectedTopic('general-expenses')} />;
+        return <ChurchTax />;
       }
     }
 
@@ -1075,39 +1072,39 @@ const TaxFiling: React.FC = () => {
       const subItemId = selectedTopic.replace('other-topics-', '');
       
       if (subItemId === 'capital-forming') {
-        return <CapitalFormingBenefits onBack={() => setSelectedTopic('other-topics')} />;
+        return <CapitalFormingBenefits />;
       }
       
       if (subItemId === 'maintenance') {
-        return <MaintenanceSupport onBack={() => setSelectedTopic('other-topics')} />;
+        return <MaintenanceSupport />;
       }
       
       if (subItemId === 'care') {
-        return <CareHomePlacement onBack={() => setSelectedTopic('other-topics')} />;
+        return <CareHomePlacement />;
       }
       
       if (subItemId === 'illness') {
-        return <IllnessSpecialCircumstances onBack={() => setSelectedTopic('other-topics')} />;
+        return <IllnessSpecialCircumstances />;
       }
       
       if (subItemId === 'energy') {
-        return <EnergyMeasures onBack={() => setSelectedTopic('other-topics')} />;
+        return <EnergyMeasures />;
       }
       
       if (subItemId === 'household') {
-        return <HouseholdInformation onBack={() => setSelectedTopic('other-topics')} />;
+        return <HouseholdInformation />;
       }
       
       if (subItemId === 'loss-carryforward') {
-        return <LossCarryforward onBack={() => setSelectedTopic('other-topics')} />;
+        return <LossCarryforward />;
       }
       
       if (subItemId === 'prepayments') {
-        return <TaxPrepayments onBack={() => setSelectedTopic('other-topics')} />;
+        return <TaxPrepayments />;
       }
       
       if (subItemId === 'additional') {
-        return <AdditionalInformation onBack={() => setSelectedTopic('other-topics')} />;
+        return <AdditionalInformation />;
       }
     }
 
@@ -1158,11 +1155,11 @@ const TaxFiling: React.FC = () => {
       const subItemId = selectedTopic.replace('tax-office-', '');
 
       if (subItemId === 'tax-office-id') {
-        return <TaxOfficeNumber onBack={() => setSelectedTopic('tax-office')} />;
+        return <TaxOfficeNumber />;
       }
 
       if (subItemId === 'bank-details') {
-        return <BankDetails onBack={() => setSelectedTopic('tax-office')} />;
+        return <BankDetails />;
       }
     }
 

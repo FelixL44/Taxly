@@ -19,11 +19,10 @@ import {
   ExpandMore as ExpandMoreIcon,
 } from '@mui/icons-material';
 
-const BRAND_GREEN = '#32CE69';
 const ACTIVE_BLUE = '#3B82F6';
 const INACTIVE_COLOR = '#475569';
 
-const InterestCapitalGains: React.FC<{ onBack: () => void }> = ({ onBack }) => {
+const InterestCapitalGains: React.FC = () => {
   const [expanded, setExpanded] = useState(true);
   const [recordCapitalGains, setRecordCapitalGains] = useState<string>('');
 

@@ -9,10 +9,6 @@ import {
   TextField,
   IconButton,
   Chip,
-  Select,
-  MenuItem,
-  FormControl,
-  InputLabel,
   Tooltip,
   Autocomplete,
 } from '@mui/material';
@@ -21,10 +17,8 @@ import {
   HelpOutline as HelpOutlineIcon,
   Add as AddIcon,
   Close as CloseIcon,
-  CalendarToday as CalendarIcon,
 } from '@mui/icons-material';
 
-const BRAND_GREEN = '#32CE69';
 const ACTIVE_BLUE = '#3B82F6';
 const INACTIVE_COLOR = '#475569';
 
@@ -45,7 +39,7 @@ const equipmentTypes = [
   'Sonstiges',
 ];
 
-const WorkEquipment: React.FC<{ onBack: () => void }> = ({ onBack }) => {
+const WorkEquipment: React.FC = () => {
   const [entryMethod, setEntryMethod] = useState<'detailed' | 'total'>('detailed');
   const [equipment, setEquipment] = useState<WorkEquipment[]>([
     {

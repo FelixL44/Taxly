@@ -22,7 +22,7 @@ import {
 const ACTIVE_BLUE = '#3B82F6';
 const INACTIVE_COLOR = '#475569';
 
-const TaxPrepayments: React.FC<{ onBack: () => void }> = () => {
+const TaxPrepayments: React.FC = () => {
   const [expanded, setExpanded] = useState(true);
   const [hasPrepayments, setHasPrepayments] = useState(false);
 

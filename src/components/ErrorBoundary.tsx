@@ -1,4 +1,4 @@
-import React, { Component, ErrorInfo, ReactNode } from 'react';
+import { Component, ErrorInfo, ReactNode } from 'react';
 import {
   Box,
   Typography,
@@ -72,7 +72,7 @@ class ErrorBoundary extends Component<Props, State> {
               <Typography variant="body1" color="text.secondary" paragraph>
                 Wir entschuldigen uns für die Unannehmlichkeiten. Bitte versuchen Sie, die Seite neu zu laden.
               </Typography>
-              {process.env.NODE_ENV === 'development' && this.state.error && (
+              {import.meta.env.DEV && this.state.error && (
                 <Box
                   sx={{
                     mt: 2,

@@ -12,7 +12,6 @@ import {
   Select,
   MenuItem,
   FormControl,
-  InputLabel,
   Tooltip,
 } from '@mui/material';
 import {
@@ -22,7 +21,6 @@ import {
   Close as CloseIcon,
 } from '@mui/icons-material';
 
-const BRAND_GREEN = '#32CE69';
 const ACTIVE_BLUE = '#3B82F6';
 const INACTIVE_COLOR = '#475569';
 
@@ -36,7 +34,7 @@ interface Contract {
   totalAmount: number;
 }
 
-const PhoneInternetCosts: React.FC<{ onBack: () => void }> = ({ onBack }) => {
+const PhoneInternetCosts: React.FC = () => {
   const [entryMethod, setEntryMethod] = useState<'detailed' | 'total'>('detailed');
   const [contracts, setContracts] = useState<Contract[]>([
     {

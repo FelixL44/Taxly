@@ -16,7 +16,6 @@ import { styled } from '@mui/material/styles';
 import {
   CheckCircle as CheckIcon,
   Description as DocumentIcon,
-  Warning as WarningIcon,
 } from '@mui/icons-material';
 
 const StyledCard = styled(Card)(({ theme }) => ({
@@ -54,7 +53,6 @@ const ReviewStep: React.FC<ReviewStepProps> = ({
   uploadedFiles,
   onSubmit,
   onBack,
-  onError,
 }) => {
   const getDeductionLabel = (key: string): string => {
     switch (key) {

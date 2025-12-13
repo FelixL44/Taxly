@@ -34,7 +34,7 @@ const services = [
   { id: 'household', label: 'Haushaltshilfen', frequent: true },
 ];
 
-const CraftsmenHousehold: React.FC<{ onBack: () => void }> = ({ onBack }) => {
+const CraftsmenHousehold: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState('');
 
   const filteredServices = services.filter((s) =>

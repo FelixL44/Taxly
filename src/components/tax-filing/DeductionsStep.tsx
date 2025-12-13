@@ -8,10 +8,6 @@ import {
   Switch,
   FormControlLabel,
   TextField,
-  FormControl,
-  InputLabel,
-  Select,
-  MenuItem,
   IconButton,
   Collapse,
 } from '@mui/material';

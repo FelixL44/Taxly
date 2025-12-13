@@ -15,14 +15,12 @@ import {
   MenuItem,
   FormControl,
   InputLabel,
-  Divider,
 } from '@mui/material';
 import {
   Delete as DeleteIcon,
   ExpandLess as ExpandLessIcon,
   ExpandMore as ExpandMoreIcon,
   Warning as WarningIcon,
-  CheckCircle as CheckCircleIcon,
 } from '@mui/icons-material';
 
 const BRAND_GREEN = '#32CE69';
@@ -67,7 +65,7 @@ interface DisabilityData {
   hasSurvivorBenefits: boolean;
 }
 
-const PersonalDetails: React.FC<{ onBack: () => void }> = ({ onBack }) => {
+const PersonalDetails: React.FC = () => {
   const [expandedSections, setExpandedSections] = useState<string[]>(['personal', 'address', 'disability']);
   
   const [personalData, setPersonalData] = useState<PersonalData>({

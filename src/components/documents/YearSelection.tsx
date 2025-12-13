@@ -6,7 +6,6 @@ import {
   CardContent,
   Typography,
   Box,
-  Button
 } from '@mui/material';
 
 const YearSelection: React.FC = () => {

@@ -20,7 +20,7 @@ import {
 const ACTIVE_BLUE = '#3B82F6';
 const INACTIVE_COLOR = '#475569';
 
-const ChurchTax: React.FC<{ onBack: () => void }> = () => {
+const ChurchTax: React.FC = () => {
   const [expanded, setExpanded] = useState(true);
   const [refunds, setRefunds] = useState(0);
   const [payments, setPayments] = useState(0);

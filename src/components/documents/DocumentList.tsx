@@ -3,19 +3,13 @@ import { useParams } from 'react-router-dom';
 import {
   Box,
   Typography,
-  List,
-  ListItem,
-  ListItemText,
-  ListItemIcon,
   IconButton,
   CircularProgress,
   Paper,
-  Divider,
   Alert,
   Button
 } from '@mui/material';
 import {
-  Description as DescriptionIcon,
   Delete as DeleteIcon,
   Download as DownloadIcon,
   Refresh as RefreshIcon,
@@ -180,7 +174,7 @@ export default function DocumentList() {
         </Alert>
       ) : (
         <Box>
-          {documents.map((doc, index) => (
+          {documents.map((doc) => (
             <Paper
               key={doc.id}
               elevation={0}

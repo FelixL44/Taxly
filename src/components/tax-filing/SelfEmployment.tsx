@@ -3,7 +3,6 @@ import {
   Box,
   Typography,
   Button,
-  TextField,
   IconButton,
   Radio,
   RadioGroup,
@@ -11,12 +10,10 @@ import {
   Select,
   MenuItem,
   FormControl,
-  InputLabel,
   Tooltip,
   Accordion,
   AccordionSummary,
   AccordionDetails,
-  Chip,
 } from '@mui/material';
 import {
   Delete as DeleteIcon,
@@ -27,7 +24,6 @@ import {
   ExpandMore as ExpandMoreIcon,
 } from '@mui/icons-material';
 
-const BRAND_GREEN = '#32CE69';
 const ACTIVE_BLUE = '#3B82F6';
 const INACTIVE_COLOR = '#475569';
 
@@ -39,7 +35,7 @@ interface Activity {
   activityType: string;
 }
 
-const SelfEmployment: React.FC<{ onBack: () => void }> = ({ onBack }) => {
+const SelfEmployment: React.FC = () => {
   const [activities, setActivities] = useState<Activity[]>([
     {
       id: '1',

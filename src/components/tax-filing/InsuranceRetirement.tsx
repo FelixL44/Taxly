@@ -37,7 +37,7 @@ const insuranceTypes = [
   { id: 'company-pension', label: 'Betriebliche Altersvorsorge', frequent: false, notDeductible: true },
 ];
 
-const InsuranceRetirement: React.FC<{ onBack: () => void }> = ({ onBack }) => {
+const InsuranceRetirement: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState('');
 
   const filteredInsurances = insuranceTypes.filter((i) =>

@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import {
   Box,
   Typography,
-  Button,
   TextField,
   IconButton,
   InputAdornment,
@@ -11,7 +10,6 @@ import {
   ListItemButton,
   ListItemText,
   Chip,
-  Card,
 } from '@mui/material';
 import {
   Delete as DeleteIcon,
@@ -34,7 +32,7 @@ const pensionTypes = [
   { id: 'other', label: 'Sonstige Rente', description: 'z.B. private Veräußerungsrente', frequent: false },
 ];
 
-const PensionsAnnuities: React.FC<{ onBack: () => void }> = ({ onBack }) => {
+const PensionsAnnuities: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState('');
 
   const filteredPensions = pensionTypes.filter((p) =>

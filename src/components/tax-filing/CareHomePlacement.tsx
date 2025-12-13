@@ -3,12 +3,10 @@ import {
   Box,
   Typography,
   Button,
-  TextField,
   IconButton,
   Select,
   MenuItem,
   FormControl,
-  InputLabel,
   Tooltip,
   Accordion,
   AccordionSummary,
@@ -31,7 +29,7 @@ interface CarePerson {
   person: string;
 }
 
-const CareHomePlacement: React.FC<{ onBack: () => void }> = () => {
+const CareHomePlacement: React.FC = () => {
   const [persons, setPersons] = useState<CarePerson[]>([
     {
       id: '1',

@@ -6,14 +6,6 @@ import {
   Accordion,
   AccordionSummary,
   AccordionDetails,
-  TextField,
-  Select,
-  MenuItem,
-  FormControl,
-  InputLabel,
-  Radio,
-  RadioGroup,
-  FormControlLabel,
   Button,
 } from '@mui/material';
 import {
@@ -26,32 +18,13 @@ const BRAND_GREEN = '#32CE69';
 const ACTIVE_BLUE = '#3B82F6';
 const INACTIVE_COLOR = '#475569';
 
-const TaxOfficeNumber: React.FC<{ onBack: () => void }> = () => {
+const TaxOfficeNumber: React.FC = () => {
   const [expandedTaxOffice, setExpandedTaxOffice] = useState(true);
   const [expandedIdNumber, setExpandedIdNumber] = useState(true);
-  const [federalState, setFederalState] = useState('Berlin');
-  const [taxOffice, setTaxOffice] = useState('Friedrichshain-Kreuzberg');
-  const [taxNumberKnown, setTaxNumberKnown] = useState(false);
-  const [idNumber, setIdNumber] = useState('');
-
-  const federalStates = [
-    'Baden-Württemberg',
-    'Bayern',
-    'Berlin',
-    'Brandenburg',
-    'Bremen',
-    'Hamburg',
-    'Hessen',
-    'Mecklenburg-Vorpommern',
-    'Niedersachsen',
-    'Nordrhein-Westfalen',
-    'Rheinland-Pfalz',
-    'Saarland',
-    'Sachsen',
-    'Sachsen-Anhalt',
-    'Schleswig-Holstein',
-    'Thüringen',
-  ];
+  const [federalState] = useState('Berlin');
+  const [taxOffice] = useState('Friedrichshain-Kreuzberg');
+  const [taxNumberKnown] = useState(false);
+  const [idNumber] = useState('');
 
   return (
     <Box>

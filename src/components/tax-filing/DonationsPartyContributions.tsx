@@ -11,7 +11,6 @@ import {
   Select,
   MenuItem,
   FormControl,
-  InputLabel,
   Tooltip,
   Accordion,
   AccordionSummary,
@@ -20,13 +19,11 @@ import {
 import {
   Delete as DeleteIcon,
   HelpOutline as HelpOutlineIcon,
-  Add as AddIcon,
   Close as CloseIcon,
   ExpandLess as ExpandLessIcon,
   ExpandMore as ExpandMoreIcon,
 } from '@mui/icons-material';
 
-const BRAND_GREEN = '#32CE69';
 const ACTIVE_BLUE = '#3B82F6';
 const INACTIVE_COLOR = '#475569';
 
@@ -39,7 +36,7 @@ interface Donation {
   amount: number;
 }
 
-const DonationsPartyContributions: React.FC<{ onBack: () => void }> = ({ onBack }) => {
+const DonationsPartyContributions: React.FC = () => {
   const [donations, setDonations] = useState<Donation[]>([
     {
       id: '1',

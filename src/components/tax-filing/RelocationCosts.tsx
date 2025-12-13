@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import {
   Box,
   Typography,
-  Button,
   TextField,
   IconButton,
   Paper,
@@ -24,7 +23,7 @@ const BRAND_GREEN = '#32CE69';
 const ACTIVE_BLUE = '#3B82F6';
 const INACTIVE_COLOR = '#475569';
 
-const RelocationCosts: React.FC<{ onBack: () => void }> = ({ onBack }) => {
+const RelocationCosts: React.FC = () => {
   const [hasRelocation, setHasRelocation] = useState(false);
   const [relocationDate, setRelocationDate] = useState('');
   const [oldAddress, setOldAddress] = useState({ postalCode: '', city: '', street: '', number: '' });
@@ -39,7 +38,7 @@ const RelocationCosts: React.FC<{ onBack: () => void }> = ({ onBack }) => {
         <Typography variant="h5" sx={{ fontWeight: 600, color: '#1E293B' }}>
           Umzugskosten
         </Typography>
-        <IconButton onClick={onBack} sx={{ color: INACTIVE_COLOR }}>
+        <IconButton sx={{ color: INACTIVE_COLOR }}>
           <ArrowBackIcon />
         </IconButton>
       </Box>

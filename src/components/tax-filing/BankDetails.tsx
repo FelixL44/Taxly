@@ -6,10 +6,6 @@ import {
   Accordion,
   AccordionSummary,
   AccordionDetails,
-  TextField,
-  Radio,
-  RadioGroup,
-  FormControlLabel,
   Button,
 } from '@mui/material';
 import {
@@ -22,12 +18,12 @@ const BRAND_GREEN = '#32CE69';
 const ACTIVE_BLUE = '#3B82F6';
 const INACTIVE_COLOR = '#475569';
 
-const BankDetails: React.FC<{ onBack: () => void }> = () => {
+const BankDetails: React.FC = () => {
   const [expanded, setExpanded] = useState(true);
-  const [accountRecorded, setAccountRecorded] = useState(true);
-  const [accountHolder, setAccountHolder] = useState('Félix Lick');
-  const [iban, setIban] = useState('DE19 6906 1800 0004 8158 07');
-  const [bankName, setBankName] = useState('Volksbank Überlingen');
+  const [accountRecorded] = useState(true);
+  const [accountHolder] = useState('Félix Lick');
+  const [iban] = useState('DE19 6906 1800 0004 8158 07');
+  const [bankName] = useState('Volksbank Überlingen');
 
   return (
     <Box>

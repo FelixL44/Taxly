@@ -3,17 +3,14 @@ import {
   Box,
   Typography,
   Button,
-  TextField,
   IconButton,
   Select,
   MenuItem,
   FormControl,
-  InputLabel,
   Tooltip,
   Accordion,
   AccordionSummary,
   AccordionDetails,
-  Chip,
 } from '@mui/material';
 import {
   Delete as DeleteIcon,
@@ -24,7 +21,6 @@ import {
   ExpandMore as ExpandMoreIcon,
 } from '@mui/icons-material';
 
-const BRAND_GREEN = '#32CE69';
 const ACTIVE_BLUE = '#3B82F6';
 const INACTIVE_COLOR = '#475569';
 
@@ -40,7 +36,7 @@ const otherIncomeTypes = [
   'Sonstige Einnahmen',
 ];
 
-const OtherIncome: React.FC<{ onBack: () => void }> = ({ onBack }) => {
+const OtherIncome: React.FC = () => {
   const [entries, setEntries] = useState<OtherIncomeEntry[]>([
     {
       id: '1',

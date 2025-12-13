@@ -3,7 +3,6 @@ import {
   Box,
   Typography,
   Button,
-  TextField,
   IconButton,
   Radio,
   RadioGroup,
@@ -11,7 +10,6 @@ import {
   Select,
   MenuItem,
   FormControl,
-  InputLabel,
   Tooltip,
   Accordion,
   AccordionSummary,
@@ -35,7 +33,7 @@ interface SupportedPerson {
   person: string;
 }
 
-const MaintenanceSupport: React.FC<{ onBack: () => void }> = () => {
+const MaintenanceSupport: React.FC = () => {
   const [persons, setPersons] = useState<SupportedPerson[]>([
     {
       id: '1',

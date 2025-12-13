@@ -11,7 +11,6 @@ import {
   Select,
   MenuItem,
   FormControl,
-  InputLabel,
   Tooltip,
   Accordion,
   AccordionSummary,
@@ -27,7 +26,6 @@ import {
   CalendarToday as CalendarIcon,
 } from '@mui/icons-material';
 
-const BRAND_GREEN = '#32CE69';
 const ACTIVE_BLUE = '#3B82F6';
 const INACTIVE_COLOR = '#475569';
 
@@ -39,7 +37,7 @@ interface Benefit {
   fromGermany: boolean;
 }
 
-const WageReplacementBenefits: React.FC<{ onBack: () => void }> = ({ onBack }) => {
+const WageReplacementBenefits: React.FC = () => {
   const [benefits, setBenefits] = useState<Benefit[]>([
     {
       id: '1',

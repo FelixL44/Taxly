@@ -6,21 +6,17 @@ import {
   Alert,
   Tooltip,
   TextField,
-  Button,
 } from '@mui/material';
 import {
   ArrowBack as ArrowBackIcon,
   HelpOutline as HelpOutlineIcon,
   Info as InfoIcon,
 } from '@mui/icons-material';
-
-const BRAND_GREEN = '#32CE69';
 const ACTIVE_BLUE = '#3B82F6';
 const INACTIVE_COLOR = '#475569';
 
 interface GenericEmployeeTaskProps {
   title: string;
-  onBack: () => void;
   description?: string;
   taxInfo?: {
     title: string;
@@ -36,7 +32,6 @@ interface GenericEmployeeTaskProps {
 
 const GenericEmployeeTask: React.FC<GenericEmployeeTaskProps> = ({
   title,
-  onBack,
   description,
   taxInfo,
   fields = [],
@@ -48,7 +43,7 @@ const GenericEmployeeTask: React.FC<GenericEmployeeTaskProps> = ({
         <Typography variant="h5" sx={{ fontWeight: 600, color: '#1E293B' }}>
           {title}
         </Typography>
-        <IconButton onClick={onBack} sx={{ color: INACTIVE_COLOR }}>
+        <IconButton sx={{ color: INACTIVE_COLOR }}>
           <ArrowBackIcon />
         </IconButton>
       </Box>
