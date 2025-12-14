@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Box,
   Typography,
@@ -200,7 +200,7 @@ const otherTopicsOptions = [
 const TaxFiling: React.FC = () => {
   const [selectedYear, setSelectedYear] = useState<number | null>(null);
   const [activeStep, setActiveStep] = useState(0);
-  const [expandedTopics, setExpandedTopics] = useState<string[]>(['personal', 'employee']);
+  const [expandedTopics, setExpandedTopics] = useState<string[]>([]);
   const [selectedTopic, setSelectedTopic] = useState<string>('personal');
   const [selectedOtherIncome, setSelectedOtherIncome] = useState<string[]>(['wage-replacement']);
   const [selectedGeneralExpenses, setSelectedGeneralExpenses] = useState<string[]>(['insurance', 'utilities']);
@@ -210,18 +210,25 @@ const TaxFiling: React.FC = () => {
 
   const steps = ['Eingaben', 'Optimieren', 'Abgabe'];
 
+  // Collapse all topics when year is selected and user navigates to inputs
+  useEffect(() => {
+    if (selectedYear !== null && activeStep === 0) {
+      setExpandedTopics([]);
+    }
+  }, [selectedYear, activeStep]);
+
   const handleTopicExpand = (topicId: string) => {
     setExpandedTopics((prev) =>
-      prev.includes(topicId) ? prev.filter((id) => id !== topicId) : [...prev, topicId]
+      prev.includes(topicId) ? [] : [topicId]
     );
   };
 
   const handleTopicSelect = (topicId: string) => {
     setSelectedTopic(topicId);
-    // Auto-expand if topic has sub-items
+    // Auto-expand if topic has sub-items (only one topic can be expanded at a time)
     const topic = mainTopics.find((t) => t.id === topicId);
-    if (topic && topic.hasSubItems && !expandedTopics.includes(topicId)) {
-      setExpandedTopics([...expandedTopics, topicId]);
+    if (topic && topic.hasSubItems) {
+      setExpandedTopics([topicId]);
     }
   };
 
@@ -1229,7 +1236,14 @@ const TaxFiling: React.FC = () => {
           {steps.map((label, index) => (
               <Step key={label}>
               <StepLabel
+                onClick={() => {
+                  // Allow navigation to any step if year is selected
+                  if (selectedYear !== null) {
+                    setActiveStep(index);
+                  }
+                }}
                 sx={{
+                  cursor: selectedYear !== null ? 'pointer' : 'default',
                   '& .MuiStepLabel-label': {
                     color: index === activeStep ? ACTIVE_BLUE : INACTIVE_COLOR,
                     fontWeight: index === activeStep ? 600 : 400,
@@ -1251,18 +1265,6 @@ const TaxFiling: React.FC = () => {
               </Step>
             ))}
           </Stepper>
-        <Button
-          variant="contained"
-          sx={{
-            bgcolor: BRAND_GREEN,
-            color: '#FFFFFF',
-            textTransform: 'none',
-            minWidth: 120,
-            '&:hover': { bgcolor: '#28B85A' },
-          }}
-        >
-          + 0,00 €
-        </Button>
       </Box>
 
       {/* Main Content Area */}
